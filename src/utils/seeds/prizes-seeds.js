@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const prizesSchemaFn = require('../../models/prizes-schema');
 
-// Ganti nama database sesuai punyamu, misal: demo-db
 const MONGODB_URI = 'mongodb://127.0.0.1:27017/demo-db';
 
 async function seed() {
@@ -9,11 +8,10 @@ async function seed() {
     console.log('Menghubungkan ke MongoDB...');
     await mongoose.connect(MONGODB_URI);
 
-    // Inisialisasi model Prize
     const Prize = prizesSchemaFn(mongoose);
 
     console.log('Membersihkan data lama...');
-    // Sekarang .deleteMany() pasti bisa dipanggil
+
     await Prize.deleteMany({});
 
     console.log('Memasukkan data hadiah baru...');
